@@ -1,0 +1,18 @@
+gnore all
+*
+
+# Unignore all with extensions
+!*.*
+
+# Unignore all dirs
+!*/
+
+# Exclude BaseProject
+BaseProject/
+
+# Ignore object files
+*.o
+objs/
+
+# Ignore Ada library information
+*.ali
