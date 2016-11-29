@@ -1,0 +1,65 @@
+with Ada.Text_IO;
+     use Ada.Text_IO;
+with Ada.Integer_Text_IO;
+     use Ada.Integer_Text_IO;
+with Ada.Float_Text_IO;
+use Ada.Float_Text_IO;
+with Ada.Real_Time;
+use Ada.Real_Time;
+with Ada.Calendar.Formatting;
+
+
+procedure main is
+
+   task type Task1 is
+      entry start;
+   end Task1;
+
+    task type Task2 is
+      entry start;
+   end Task2;
+
+   task body Task1 is
+      i : integer := 0;
+   begin
+      accept start;
+      loop
+         if i mod 10 /= 0
+           then
+            put("Task1: ");
+            put(i);
+            New_Line;
+         end if;
+         delay(1.0);
+         i := i + 1;
+      end loop;
+   end Task1;
+
+   task body Task2 is
+      i : integer := 0;
+      t : Time;
+      now : Time;
+      d : Time_Span;
+   begin
+      accept start;
+      t := Clock;
+      loop
+         now := Clock;
+         d := t - now;
+         put(i);
+         put( " Relativzeit:" );
+         put( Ada.Calendar.Formatting.Image(to_Duration(d),True));
+          New_Line;
+         i := i + 1;
+         delay(10.0);
+      end loop;
+   end Task2;
+
+   t1 : Task1;
+   t2 : Task2;
+
+begin
+   t1.start;
+   t2.start;
+
+end main;
