@@ -61,5 +61,4 @@ procedure main is
 begin
    t1.start;
    t2.start;
-
 end main;
